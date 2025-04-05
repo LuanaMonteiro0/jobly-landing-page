@@ -15,37 +15,89 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      <main>
+    <div className={styles.page}>
+      <main className={styles.main}>
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 to-secondary-600 text-white">
-          <div className="absolute inset-0 bg-grid-white/[0.2] bg-[size:20px_20px]" />
-          <div className="container mx-auto px-4 py-20 relative">
-            <div className="max-w-3xl mx-auto text-center animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+        <section className={styles.hero}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
+            <div style={{ maxWidth: '48rem', margin: '0 auto', textAlign: 'center' }}>
+              <div style={{ 
+                marginBottom: '3rem',
+                display: 'flex',
+                justifyContent: 'center'
+              }}>
+                <Image
+                  src="/logo.png"
+                  alt="Jobly Logo"
+                  width={600}
+                  height={200}
+                  style={{ 
+                    objectFit: 'contain'
+                  }}
+                  priority
+                />
+              </div>
+              <h1 className={styles.heroTitle}>
                 Find Your Dream Job with{' '}
-                <span className="text-primary-200">Jobly</span>
+                <span style={{ color: '#bae6fd' }}>Jobly</span>
               </h1>
-              <p className="text-lg md:text-xl mb-8 text-primary-100">
+              <p className={styles.heroSubtitle}>
                 Your centralized platform for discovering the perfect job opportunities. 
                 Browse through detailed job descriptions and find your next career move.
               </p>
-              <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-                <div className="flex gap-3 p-2 bg-white/10 backdrop-blur-sm rounded-xl">
+              <form onSubmit={handleSubmit} style={{ maxWidth: '28rem', margin: '2rem auto 0' }}>
+                <div style={{ 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  gap: '1rem',
+                  padding: '1.5rem',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(4px)',
+                  borderRadius: '1rem',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                }}>
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/40"
+                    style={{ 
+                      width: '100%',
+                      padding: '1rem 1.25rem',
+                      borderRadius: '0.75rem',
+                      background: 'rgba(255, 255, 255, 0.15)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: 'white',
+                      fontSize: '1rem',
+                      outline: 'none',
+                      transition: 'all 0.3s ease'
+                    }}
                     required
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-white text-primary-600 rounded-lg font-semibold hover:bg-primary-50 transition-all duration-300 flex items-center gap-2"
+                    style={{
+                      width: '100%',
+                      padding: '1rem 2rem',
+                      background: 'white',
+                      color: '#0284c7',
+                      fontWeight: '600',
+                      borderRadius: '0.75rem',
+                      border: 'none',
+                      fontSize: '1rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.5rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                    }}
+                    onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                    onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                   >
                     Get Started
-                    <ArrowRightIcon className="w-4 h-4" />
+                    <ArrowRightIcon style={{ width: '1.25rem', height: '1.25rem' }} />
                   </button>
                 </div>
               </form>
@@ -54,36 +106,36 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-              Why Choose <span className="text-primary-600">Jobly</span>?
+        <section className={styles.features}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
+            <h2 className={styles.featuresTitle}>
+              Why Choose <span style={{ color: '#0284c7' }}>Jobly</span>?
             </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="group p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-all duration-300 animate-slide-up">
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <MagnifyingGlassIcon className="h-6 w-6 text-primary-600" />
+            <div className={styles.featuresGrid}>
+              <div className={styles.featureCard}>
+                <div className={styles.featureIcon}>
+                  <MagnifyingGlassIcon style={{ width: '1.5rem', height: '1.5rem', color: '#0284c7' }} />
                 </div>
-                <h3 className="text-lg font-semibold mb-3 text-gray-900">Easy Job Search</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <h3 className={styles.featureTitle}>Easy Job Search</h3>
+                <p className={styles.featureDescription}>
                   Find relevant job opportunities quickly with our advanced search and filtering system.
                 </p>
               </div>
-              <div className="group p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-all duration-300 animate-slide-up [animation-delay:200ms]">
-                <div className="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <DocumentTextIcon className="h-6 w-6 text-secondary-600" />
+              <div className={styles.featureCard}>
+                <div className={styles.featureIcon}>
+                  <DocumentTextIcon style={{ width: '1.5rem', height: '1.5rem', color: '#7c3aed' }} />
                 </div>
-                <h3 className="text-lg font-semibold mb-3 text-gray-900">Detailed Descriptions</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <h3 className={styles.featureTitle}>Detailed Descriptions</h3>
+                <p className={styles.featureDescription}>
                   Get comprehensive job descriptions with all the information you need to make informed decisions.
                 </p>
               </div>
-              <div className="group p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-all duration-300 animate-slide-up [animation-delay:400ms]">
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <BellIcon className="h-6 w-6 text-primary-600" />
+              <div className={styles.featureCard}>
+                <div className={styles.featureIcon}>
+                  <BellIcon style={{ width: '1.5rem', height: '1.5rem', color: '#0284c7' }} />
                 </div>
-                <h3 className="text-lg font-semibold mb-3 text-gray-900">Job Alerts</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <h3 className={styles.featureTitle}>Job Alerts</h3>
+                <p className={styles.featureDescription}>
                   Never miss an opportunity with personalized job alerts based on your preferences.
                 </p>
               </div>
@@ -92,30 +144,66 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-primary-50 to-secondary-50">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+        <section className={styles.cta}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem', textAlign: 'center' }}>
+            <h2 className={styles.ctaTitle}>
               Ready to Find Your Next Opportunity?
             </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className={styles.ctaSubtitle}>
               Join thousands of professionals who have found their dream jobs through Jobly.
             </p>
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-              <div className="flex gap-3 p-2 bg-white rounded-xl shadow-md">
+            <form onSubmit={handleSubmit} style={{ maxWidth: '28rem', margin: '2rem auto 0' }}>
+              <div style={{ 
+                display: 'flex', 
+                flexDirection: 'column',
+                gap: '1rem',
+                padding: '1.5rem',
+                background: 'white',
+                borderRadius: '1rem',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+              }}>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  style={{ 
+                    width: '100%',
+                    padding: '1rem 1.25rem',
+                    borderRadius: '0.75rem',
+                    background: '#f3f4f6',
+                    border: '1px solid #e5e7eb',
+                    color: '#1f2937',
+                    fontSize: '1rem',
+                    outline: 'none',
+                    transition: 'all 0.3s ease'
+                  }}
                   required
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-all duration-300 flex items-center gap-2"
+                  style={{
+                    width: '100%',
+                    padding: '1rem 2rem',
+                    background: '#0284c7',
+                    color: 'white',
+                    fontWeight: '600',
+                    borderRadius: '0.75rem',
+                    border: 'none',
+                    fontSize: '1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                  onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                 >
                   Join Now
-                  <ArrowRightIcon className="w-4 h-4" />
+                  <ArrowRightIcon style={{ width: '1.25rem', height: '1.25rem' }} />
                 </button>
               </div>
             </form>
@@ -123,33 +211,45 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-gray-900 text-gray-300 py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
+      <footer className={styles.footer}>
+        <div className={styles.footerContainer}>
+          <div className={styles.footerLinks}>
             <div>
-              <h3 className="text-lg font-bold text-white mb-3">Jobly</h3>
-              <p className="text-gray-400 text-sm">
+              <div style={{ marginBottom: '1rem' }}>
+                <Image
+                  src="/logo.png"
+                  alt="Jobly Logo"
+                  width={150}
+                  height={50}
+                  style={{ 
+                    filter: 'brightness(0) invert(1)',
+                    objectFit: 'contain'
+                  }}
+                  priority
+                />
+              </div>
+              <p style={{ color: '#9ca3af', fontSize: '0.875rem' }}>
                 Your trusted platform for finding the perfect job opportunity.
               </p>
             </div>
             <div>
-              <h4 className="text-base font-semibold text-white mb-3">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">How it Works</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+              <h4 className={styles.footerSectionTitle}>Quick Links</h4>
+              <ul className={styles.footerLinkList}>
+                <li><a href="#" style={{ transition: 'color 0.3s' }}>About Us</a></li>
+                <li><a href="#" style={{ transition: 'color 0.3s' }}>How it Works</a></li>
+                <li><a href="#" style={{ transition: 'color 0.3s' }}>Contact</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-base font-semibold text-white mb-3">Connect</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">LinkedIn</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">GitHub</a></li>
+              <h4 className={styles.footerSectionTitle}>Connect</h4>
+              <ul className={styles.footerLinkList}>
+                <li><a href="#" style={{ transition: 'color 0.3s' }}>Twitter</a></li>
+                <li><a href="#" style={{ transition: 'color 0.3s' }}>LinkedIn</a></li>
+                <li><a href="#" style={{ transition: 'color 0.3s' }}>GitHub</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-6 text-center text-sm">
+          <div style={{ borderTop: '1px solid #374151', marginTop: '2rem', paddingTop: '1.5rem', textAlign: 'center', fontSize: '0.875rem' }}>
             <p>&copy; 2024 Jobly. All rights reserved.</p>
           </div>
         </div>
